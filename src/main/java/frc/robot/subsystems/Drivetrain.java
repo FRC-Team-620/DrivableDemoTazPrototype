@@ -7,27 +7,20 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.drivetrain.DriveWithJoysticks;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Spark;
 
-/**
- * Add your docs here.
- */
-public class Drivetrain extends Subsystem 
-{
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+public class Drivetrain extends Subsystem {
 
   @Override
-  public void initDefaultCommand() 
+  public void initDefaultCommand() //TODO: potentially flip motor groups
   {
     setDefaultCommand(new DriveWithJoysticks());
-    var leftSide = new SpeedControllerGroup(new Spark(Pin.getId(Pin.LEFTFRONTMOTOR, this)), new Spark(Pin.getId(Pin.LEFTREARMOTOR, this)));
-    var rightSide = new SpeedControllerGroup(new Spark(Pin.getId(Pin.RIGHTFRONTMOTOR, this)), new Spark(Pin.getId(Pin.RIGHTREARMOTOR, this)));
+    var leftSide = new SpeedControllerGroup(new Spark(Pin.getId(Pin.LEFTFRONTMOTOR)), new Spark(Pin.getId(Pin.LEFTREARMOTOR)));
+    var rightSide = new SpeedControllerGroup(new Spark(Pin.getId(Pin.RIGHTFRONTMOTOR)), new Spark(Pin.getId(Pin.RIGHTREARMOTOR)));
     dDrive = new DifferentialDrive(leftSide, rightSide);
   }
 
