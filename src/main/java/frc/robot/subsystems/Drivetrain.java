@@ -19,14 +19,24 @@ public class Drivetrain extends Subsystem {
   public void initDefaultCommand() //TODO: potentially flip motor groups
   {
     setDefaultCommand(new DriveWithJoysticks());
-    var leftSide = new SpeedControllerGroup(new Spark(Pin.getId(Pin.LEFTFRONTMOTOR)), new Spark(Pin.getId(Pin.LEFTREARMOTOR)));
-    var rightSide = new SpeedControllerGroup(new Spark(Pin.getId(Pin.RIGHTFRONTMOTOR)), new Spark(Pin.getId(Pin.RIGHTREARMOTOR)));
+    var lf = new Spark(Pin.getId(Pin.LEFTFRONTMOTOR));
+    var lr = new Spark(Pin.getId(Pin.LEFTREARMOTOR));
+    var rf = new Spark(Pin.getId(Pin.RIGHTFRONTMOTOR));
+    var rr = new Spark(Pin.getId(Pin.RIGHTREARMOTOR));
+
+    /*lf.setInverted(false);
+    lr.setInverted(false);
+    rf.setInverted(false);
+    rr.setInverted(false);*/
+
+    var leftSide = new SpeedControllerGroup(lf, lr);
+    var rightSide = new SpeedControllerGroup(rf, rr);
     dDrive = new DifferentialDrive(leftSide, rightSide);
   }
 
   public void arcadeDrive(double move, double rotate)
   {
-    dDrive.arcadeDrive(move, rotate);
+    dDrive.arcadeDrive(move, -1 * rotate);
   }
 
   private DifferentialDrive dDrive;

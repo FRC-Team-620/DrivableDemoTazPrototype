@@ -15,10 +15,10 @@ enum Pin
 
     //vvvvvvvvv ELECTRONICS EDITING START HERE vvvvvvvvvvv
 
-    LEFTFRONTMOTOR(0, Robot.drivetrain),
-    RIGHTFRONTMOTOR(1, Robot.drivetrain),
+    LEFTFRONTMOTOR(1, Robot.drivetrain),
+    RIGHTFRONTMOTOR(3, Robot.drivetrain),
     LEFTREARMOTOR(2, Robot.drivetrain),
-    RIGHTREARMOTOR(3, Robot.drivetrain),
+    RIGHTREARMOTOR(4, Robot.drivetrain),
 
     /*^^^^^^^^^^ ELECTRONICS EDITING END HERE ^^^^^^^^^^^^
      *
