@@ -38,6 +38,7 @@ public class Drivetrain extends Subsystem {
   {
     dDrive.arcadeDrive(move, -1 * rotate);
   }
-
+  
   private DifferentialDrive dDrive;
+  private double calibrationFactor;
 }
